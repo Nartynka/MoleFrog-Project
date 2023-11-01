@@ -4,6 +4,7 @@
 
 #include "Render/Render.h"
 #include "Player/Player.h"
+#include "Entity/Entity.h"
 
 
 int main(int argc, char* args[])
@@ -18,10 +19,13 @@ int main(int argc, char* args[])
 	RenderInit();
 
 	Player* player = new Player();
-	
+	Entity* ghost = new Entity("res/ghost.png");
+	Entity* candy = new Entity("res/candy.png", 250);
+
 	std::vector<GameObject*> game_objects;
-	
 	game_objects.push_back(player);
+	game_objects.push_back(ghost);
+	game_objects.push_back(candy);
 
 	bool quit = false;
 	SDL_Event event;
@@ -45,11 +49,15 @@ int main(int argc, char* args[])
 				object->Move(dt);
 			}
 
+
 			DrawFrog();
 			DrawMole();
 			DrawGround();
 
-			player->Draw();
+			for (GameObject* object : game_objects)
+			{
+				object->Draw();
+			}
 			
 			Render();
 

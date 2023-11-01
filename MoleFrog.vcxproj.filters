@@ -14,6 +14,9 @@
     <Filter Include="Source Files\Render">
       <UniqueIdentifier>{e895c773-09f9-4313-b199-e25d16c767e0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Entity">
+      <UniqueIdentifier>{89cf281b-6070-418b-abbb-7af25bddf4dc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Main.cpp">
@@ -28,6 +31,9 @@
     <ClCompile Include="src\GameObject\GameObject.cpp">
       <Filter>Source Files\GameObject</Filter>
     </ClCompile>
+    <ClCompile Include="src\Entity\Entity.cpp">
+      <Filter>Source Files\Entity</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Vec2.h">
@@ -41,6 +47,9 @@
     </ClInclude>
     <ClInclude Include="src\Player\Player.h">
       <Filter>Source Files\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Entity.h">
+      <Filter>Source Files\Entity</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

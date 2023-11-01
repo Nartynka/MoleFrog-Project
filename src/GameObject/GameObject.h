@@ -7,7 +7,7 @@ public:
 	GameObject(const char* texture_path);
 	~GameObject();
 	void Draw();
-	void Move(float dt);
+	virtual void Move(float dt);
 protected:
 	struct SDL_Texture* texture;
 	Vec2 size;

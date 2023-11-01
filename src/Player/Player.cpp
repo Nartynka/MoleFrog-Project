@@ -1,6 +1,6 @@
 #include "Player.h"
 #include "../Render/Render.h"
-#include <SDL_image.h>
+#include <SDL.h>
 
 Player::Player() : GameObject("res/Player.jpg")
 {
@@ -41,5 +41,18 @@ void Player::HandleInput()
 	else
 	{
 		velocity.y = 0;
+	}
+}
+
+void Player::Move(float dt)
+{
+	if (velocity.x != 0)
+	{
+		position.x += velocity.x * speed * dt;
+	}
+
+	if (velocity.y != 0)
+	{
+		position.y += velocity.y * jump_speed * dt;
 	}
 }

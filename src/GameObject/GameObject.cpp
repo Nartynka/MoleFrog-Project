@@ -24,9 +24,4 @@ void GameObject::Move(float dt)
 	{
 		position.x += velocity.x * speed * dt;
 	}
-
-	if (velocity.y != 0)
-	{
-		position.y += velocity.y * jump_speed * dt;
-	}
 }

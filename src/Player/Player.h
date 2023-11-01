@@ -8,6 +8,6 @@ public:
 	Player();
 	~Player();
 
+	void HandleInput();
 private:
-
 };

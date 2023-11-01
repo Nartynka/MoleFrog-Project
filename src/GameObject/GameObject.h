@@ -4,12 +4,16 @@
 class GameObject
 {
 public:
-	GameObject(const char* texture_path, Vec2 pos = {0,0});
+	GameObject(const char* texture_path);
 	~GameObject();
 	void Draw();
-
-private:
+	void Move(float dt);
+protected:
 	struct SDL_Texture* texture;
 	Vec2 size;
-	Vec2 position;
+	Vec2 position = {0, 0};
+	Vec2 velocity = {0, 0};
+	int speed = 256;
+	int jump_speed = 256;
+	const int GROUND_LEVEL = 400;
 };

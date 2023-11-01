@@ -1,5 +1,6 @@
 #include <SDL.h>
 #include <assert.h>
+#include <vector>
 
 #include "Render/Render.h"
 #include "Player/Player.h"
@@ -17,14 +18,17 @@ int main(int argc, char* args[])
 	RenderInit();
 
 	Player* player = new Player();
-	//Player player;
+	
+	std::vector<GameObject*> game_objects;
+	
+	game_objects.push_back(player);
+
 	bool quit = false;
 	SDL_Event event;
 	
 	while (!quit)
 	{
 		dt = (SDL_GetTicks() - lastTime) / 1000;
-
 		if (dt >= DESIRED_DT)
 		{
 			while (SDL_PollEvent(&event) != 0)
@@ -34,11 +38,17 @@ int main(int argc, char* args[])
 			}
 
 		
+			player->HandleInput();
+
+			for (GameObject* object : game_objects)
+			{
+				object->Move(dt);
+			}
 
 			DrawFrog();
 			DrawMole();
 			player->Draw();
-
+			
 			Render();
 
 			lastTime = (float)SDL_GetTicks();

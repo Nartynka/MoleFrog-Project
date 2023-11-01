@@ -48,17 +48,7 @@ void Render()
 {
 	SDL_SetRenderDrawColor(GetRenderer(), 0, 0, 0, 255);
 	SDL_RenderPresent(GetRenderer());
-}
-
-void DrawObject(SDL_Texture* texture, Vec2 size, Vec2 pos)
-{
-	SDL_Rect dsrect = { pos.x, pos.y, size.x, size.y };
-	//SDL_SetRenderDrawColor(GetRenderer(), 100, 200, 100, 255);
-	//SDL_RenderFillRect(GetRenderer(), &dsrect);
-
-	assert(texture != nullptr && "Could not draw object, texture invalid!");
-	SDL_RenderCopy(GetRenderer(), texture, NULL, &dsrect);
-
+	SDL_RenderClear(GetRenderer());
 }
 
 void CreateTexture(const char* texture_path, SDL_Texture** out_texture, Vec2& out_size)
@@ -68,8 +58,15 @@ void CreateTexture(const char* texture_path, SDL_Texture** out_texture, Vec2& ou
 	assert(loaded_surface != nullptr && "Unable to load image");
 	*out_texture = SDL_CreateTextureFromSurface(GetRenderer(), loaded_surface);
 	assert(out_texture != nullptr && "Unable to create texture from surface!");
-	out_size = { loaded_surface->w, loaded_surface->h };
+	out_size = { (float)loaded_surface->w, (float)loaded_surface->h };
 	SDL_FreeSurface(loaded_surface);
+}
+
+void DrawObject(SDL_Texture* texture, Vec2 size, Vec2 pos)
+{
+	SDL_Rect dsrect = { pos.x, pos.y, size.x, size.y };
+	assert(texture != nullptr && "Could not draw object, texture invalid!");
+	SDL_RenderCopy(GetRenderer(), texture, NULL, &dsrect);
 }
 
 void DrawRect(SDL_Rect& size, SDL_Color&& color)

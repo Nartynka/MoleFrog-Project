@@ -3,6 +3,7 @@
 
 const int SCREEN_WIDTH = 1080;
 const int SCREEN_HEIGHT = 720;
+const int GROUND_LEVEL = 500;
 
 struct SDL_Rect;
 struct SDL_Texture;
@@ -18,3 +19,4 @@ void CreateTexture(const char* texture_path, SDL_Texture** out_texture, Vec2& ou
 void DrawRect(SDL_Rect& size, struct SDL_Color&& color);
 void DrawMole();
 void DrawFrog();
+void DrawGround();

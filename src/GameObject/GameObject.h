@@ -15,5 +15,4 @@ protected:
 	Vec2 velocity = {0, 0};
 	int speed = 256;
 	int jump_speed = 256;
-	const int GROUND_LEVEL = 400;
 };

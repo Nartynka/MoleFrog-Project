@@ -10,4 +10,5 @@ public:
 
 	void HandleInput();
 private:
+	int player_ground_level;
 };

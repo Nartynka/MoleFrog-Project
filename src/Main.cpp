@@ -47,6 +47,8 @@ int main(int argc, char* args[])
 
 			DrawFrog();
 			DrawMole();
+			DrawGround();
+
 			player->Draw();
 			
 			Render();

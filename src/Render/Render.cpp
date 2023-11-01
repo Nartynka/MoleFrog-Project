@@ -75,6 +75,12 @@ void DrawRect(SDL_Rect& size, SDL_Color&& color)
 	SDL_RenderFillRect(GetRenderer(), &size);
 }
 
+void DrawGround()
+{
+	SDL_Rect ground = { 0, GROUND_LEVEL, SCREEN_WIDTH, SCREEN_HEIGHT - GROUND_LEVEL };
+	DrawRect(ground, {90, 50, 35, 255});
+}
+
 void DrawFrog()
 {
 

@@ -4,7 +4,8 @@
 
 Player::Player() : GameObject("res/Player.jpg")
 {
-	position = { 0,400 };
+	player_ground_level = GROUND_LEVEL - size.y;
+	position = { 0.f, (float)player_ground_level };
 	speed = 512;
 }
 
@@ -33,7 +34,7 @@ void Player::HandleInput()
 	{
 		velocity.y = -1;
 	}
-	else if(position.y != GROUND_LEVEL)
+	else if(position.y != player_ground_level)
 	{
 		velocity.y = 1;
 	}

@@ -19,11 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GameObject\GameObject.cpp" />
     <ClCompile Include="src\Main.cpp" />
-    <ClCompile Include="src\Render.cpp" />
+    <ClCompile Include="src\Player\Player.cpp" />
+    <ClCompile Include="src\Render\Render.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Render.h" />
+    <ClInclude Include="src\GameObject\GameObject.h" />
+    <ClInclude Include="src\Player\Player.h" />
+    <ClInclude Include="src\Render\Render.h" />
+    <ClInclude Include="src\Vec2.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

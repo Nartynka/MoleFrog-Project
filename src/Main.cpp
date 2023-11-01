@@ -1,7 +1,8 @@
 #include <SDL.h>
 #include <assert.h>
 
-#include "Render.h"
+#include "Render/Render.h"
+#include "Player/Player.h"
 
 
 int main(int argc, char* args[])
@@ -15,6 +16,8 @@ int main(int argc, char* args[])
 
 	RenderInit();
 
+	Player* player = new Player();
+	//Player player;
 	bool quit = false;
 	SDL_Event event;
 	
@@ -30,8 +33,11 @@ int main(int argc, char* args[])
 					quit = true;
 			}
 
+		
+
 			DrawFrog();
 			DrawMole();
+			player->Draw();
 
 			Render();
 

@@ -3,11 +3,12 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <cassert>
+#include <stdio.h>
 
 
 SDL_Window* GetWindow()
 {
-	// Window has to be stored somewhere becouse we have to destroy it at the end
+	// Window has to be stored somewhere because we have to destroy it at the end
 	static SDL_Window* window;
 
 	if (!window)
@@ -49,6 +50,28 @@ void Render()
 	SDL_RenderPresent(GetRenderer());
 }
 
+void DrawObject(SDL_Texture* texture, Vec2 size, Vec2 pos)
+{
+	SDL_Rect dsrect = { pos.x, pos.y, size.x, size.y };
+	//SDL_SetRenderDrawColor(GetRenderer(), 100, 200, 100, 255);
+	//SDL_RenderFillRect(GetRenderer(), &dsrect);
+
+	assert(texture != nullptr && "Could not draw object, texture invalid!");
+	SDL_RenderCopy(GetRenderer(), texture, NULL, &dsrect);
+
+}
+
+void CreateTexture(const char* texture_path, SDL_Texture** out_texture, Vec2& out_size)
+{
+	assert(texture_path != nullptr && "Texture path was not specified!");
+	SDL_Surface* loaded_surface = IMG_Load(texture_path);
+	assert(loaded_surface != nullptr && "Unable to load image");
+	*out_texture = SDL_CreateTextureFromSurface(GetRenderer(), loaded_surface);
+	assert(out_texture != nullptr && "Unable to create texture from surface!");
+	out_size = { loaded_surface->w, loaded_surface->h };
+	SDL_FreeSurface(loaded_surface);
+}
+
 void DrawRect(SDL_Rect& size, SDL_Color&& color)
 {
 	SDL_SetRenderDrawColor(GetRenderer(), color.r, color.g, color.b, color.a);
@@ -57,6 +80,7 @@ void DrawRect(SDL_Rect& size, SDL_Color&& color)
 
 void DrawFrog()
 {
+
 	SDL_Rect frogHead = { SCREEN_WIDTH / 2 + 150, SCREEN_HEIGHT / 2 - 50, 100, 50 };
 	DrawRect(frogHead, { 100, 255, 50, 255 });
 

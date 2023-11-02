@@ -4,7 +4,7 @@
 class Candy : public Entity
 {
 public:
-	Candy(const char* texture_path, float pos_y = 100.f);
+	Candy(float side = 0.f, float pos_y = 250.f, float vel_x = -1, const char* texture_path = "res/candy.png");
 	~Candy();
 	void OnCollision() override;
 private:

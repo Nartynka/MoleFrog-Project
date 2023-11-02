@@ -26,6 +26,9 @@
     <Filter Include="Source Files\Entity\Ghost">
       <UniqueIdentifier>{0a4645d9-dd50-4518-b615-1925564be201}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\EntitySpawner">
+      <UniqueIdentifier>{0d6525d7-67b5-4f20-8931-c6191f155c06}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Main.cpp">
@@ -52,6 +55,9 @@
     <ClCompile Include="src\Entity\Ghost\Ghost.cpp">
       <Filter>Source Files\Entity\Ghost</Filter>
     </ClCompile>
+    <ClCompile Include="src\EntitySpawner\EntitySpawner.cpp">
+      <Filter>Source Files\EntitySpawner</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Vec2.h">
@@ -77,6 +83,12 @@
     </ClInclude>
     <ClInclude Include="src\Entity\Ghost\Ghost.h">
       <Filter>Source Files\Entity\Ghost</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EntitySpawner\EntitySpawner.h">
+      <Filter>Source Files\EntitySpawner</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Globals.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

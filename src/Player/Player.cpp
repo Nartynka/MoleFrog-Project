@@ -1,10 +1,10 @@
 #include "Player.h"
-#include "../Render/Render.h"
+#include "../Globals.h"
 #include <SDL.h>
 
 Player::Player() : GameObject("res/Player.jpg")
 {
-	player_ground_level = GROUND_LEVEL - size.y;
+	player_ground_level = GROUND_LEVEL - (int)size.y;
 	position = { 0.f, (float)player_ground_level };
 	speed = 512;
 }

@@ -1,9 +1,9 @@
 #include "Candy.h"
-#include <stdio.h>
+#include "../../Globals.h"
 
-static int points = 0;
+#include <cstdio>
 
-Candy::Candy(const char* texture_path, float pos_y) : Entity(texture_path, pos_y)
+Candy::Candy(float side, float pos_y, float vel_x, const char* texture_path) : Entity(texture_path, side, pos_y, vel_x)
 {
 }
 
@@ -15,5 +15,4 @@ void Candy::OnCollision()
 {
 	points++;
 	printf("Points: %i\n", points);
-
 }

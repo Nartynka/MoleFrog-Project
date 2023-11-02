@@ -1,7 +1,7 @@
 #include "Ghost.h"
-#include <stdio.h>
+#include <cstdio>
 
-Ghost::Ghost(const char* texture_path, float pos_y) : Entity(texture_path, pos_y)
+Ghost::Ghost(float side, float pos_y, float vel_x, const char* texture_path) : Entity(texture_path, side, pos_y, vel_x)
 {
 }
 
@@ -11,6 +11,5 @@ Ghost::~Ghost()
 
 void Ghost::OnCollision()
 {
-	printf("GHOOOST\n");
-
+	printf("GAME OVER\n");
 }

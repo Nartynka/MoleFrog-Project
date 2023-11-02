@@ -1,5 +1,6 @@
 #pragma once
 #include "../Vec2.h"
+#include "../Collider/Collider.h"
 
 class GameObject
 {
@@ -8,6 +9,7 @@ public:
 	~GameObject();
 	void Draw();
 	virtual void Move(float dt);
+	Collider* collider;
 protected:
 	struct SDL_Texture* texture;
 	Vec2 size;

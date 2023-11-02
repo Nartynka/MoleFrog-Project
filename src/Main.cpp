@@ -49,6 +49,14 @@ int main(int argc, char* args[])
 				object->Move(dt);
 			}
 
+			for (GameObject* object : game_objects)
+			{
+				if (object != player)
+				{
+					bool a = player->collider->CheckCollision(object->collider);
+					printf("%u", a);
+				}
+			}
 
 			DrawFrog();
 			DrawMole();

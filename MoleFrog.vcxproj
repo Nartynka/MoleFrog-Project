@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Collider\Collider.cpp" />
     <ClCompile Include="src\Entity\Entity.cpp" />
     <ClCompile Include="src\GameObject\GameObject.cpp" />
     <ClCompile Include="src\Main.cpp" />
@@ -26,6 +27,7 @@
     <ClCompile Include="src\Render\Render.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Collider\Collider.h" />
     <ClInclude Include="src\Entity\Entity.h" />
     <ClInclude Include="src\GameObject\GameObject.h" />
     <ClInclude Include="src\Player\Player.h" />

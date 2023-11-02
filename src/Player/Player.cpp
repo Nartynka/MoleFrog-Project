@@ -55,4 +55,5 @@ void Player::Move(float dt)
 	{
 		position.y += velocity.y * jump_speed * dt;
 	}
+	collider->UpdatePosition(position);
 }

@@ -17,6 +17,9 @@
     <Filter Include="Source Files\Entity">
       <UniqueIdentifier>{89cf281b-6070-418b-abbb-7af25bddf4dc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Collider">
+      <UniqueIdentifier>{363ade6c-70c8-4241-9044-51d4d6fb9a50}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Main.cpp">
@@ -34,6 +37,9 @@
     <ClCompile Include="src\Entity\Entity.cpp">
       <Filter>Source Files\Entity</Filter>
     </ClCompile>
+    <ClCompile Include="src\Collider\Collider.cpp">
+      <Filter>Source Files\Collider</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Vec2.h">
@@ -50,6 +56,9 @@
     </ClInclude>
     <ClInclude Include="src\Entity\Entity.h">
       <Filter>Source Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Collider\Collider.h">
+      <Filter>Source Files\Collider</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

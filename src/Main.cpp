@@ -15,6 +15,7 @@ int main(int argc, char* args[])
 	float lastTime = 0.f;
 	const float DESIRED_DT = 1 / 60.f; // 60 FPS
 
+
 	int result = SDL_Init(SDL_INIT_VIDEO);
 	assert(result == 0 && "SDL could not initialize!");
 
@@ -53,14 +54,23 @@ int main(int argc, char* args[])
 
 			for (GameObject* object : game_objects)
 			{
-				object->Move(dt);
+				if(object != nullptr)
+					object->Move(dt);
 			}
 
 			for (Entity* entity : entities)
 			{
+				if (entity == nullptr)
+					continue;
+
 				bool is_colliding = player->collider->CheckCollision(entity->collider);
 				if (is_colliding)
+				{
 					entity->OnCollision();
+					entities.erase(std::find(entities.begin(), entities.end(), entity));
+					game_objects.erase(std::find(game_objects.begin(), game_objects.end(), entity));
+					delete entity;
+				}
 			}
 
 			DrawFrog();

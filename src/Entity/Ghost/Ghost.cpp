@@ -12,4 +12,5 @@ Ghost::~Ghost()
 void Ghost::OnCollision()
 {
 	printf("GHOOOST\n");
+
 }

@@ -20,7 +20,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Collider\Collider.cpp" />
+    <ClCompile Include="src\Entity\Candy\Candy.cpp" />
     <ClCompile Include="src\Entity\Entity.cpp" />
+    <ClCompile Include="src\Entity\Ghost\Ghost.cpp" />
     <ClCompile Include="src\GameObject\GameObject.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Player\Player.cpp" />
@@ -28,7 +30,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Collider\Collider.h" />
+    <ClInclude Include="src\Entity\Candy\Candy.h" />
     <ClInclude Include="src\Entity\Entity.h" />
+    <ClInclude Include="src\Entity\Ghost\Ghost.h" />
     <ClInclude Include="src\GameObject\GameObject.h" />
     <ClInclude Include="src\Player\Player.h" />
     <ClInclude Include="src\Render\Render.h" />

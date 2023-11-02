@@ -20,6 +20,12 @@
     <Filter Include="Source Files\Collider">
       <UniqueIdentifier>{363ade6c-70c8-4241-9044-51d4d6fb9a50}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Entity\Candy">
+      <UniqueIdentifier>{08faacf7-7771-4744-b10f-0789234d2688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity\Ghost">
+      <UniqueIdentifier>{0a4645d9-dd50-4518-b615-1925564be201}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Main.cpp">
@@ -40,6 +46,12 @@
     <ClCompile Include="src\Collider\Collider.cpp">
       <Filter>Source Files\Collider</Filter>
     </ClCompile>
+    <ClCompile Include="src\Entity\Candy\Candy.cpp">
+      <Filter>Source Files\Entity\Candy</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Ghost\Ghost.cpp">
+      <Filter>Source Files\Entity\Ghost</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Vec2.h">
@@ -59,6 +71,12 @@
     </ClInclude>
     <ClInclude Include="src\Collider\Collider.h">
       <Filter>Source Files\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Candy\Candy.h">
+      <Filter>Source Files\Entity\Candy</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Ghost\Ghost.h">
+      <Filter>Source Files\Entity\Ghost</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

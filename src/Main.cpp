@@ -5,6 +5,8 @@
 #include "Render/Render.h"
 #include "Player/Player.h"
 #include "Entity/Entity.h"
+#include "Entity/Candy/Candy.h"
+#include "Entity/Ghost/Ghost.h"
 
 
 int main(int argc, char* args[])
@@ -19,13 +21,18 @@ int main(int argc, char* args[])
 	RenderInit();
 
 	Player* player = new Player();
-	Entity* ghost = new Entity("res/ghost.png");
-	Entity* candy = new Entity("res/candy.png", 250);
+	Ghost* ghost = new Ghost("res/ghost.png");
+	Candy* candy = new Candy("res/candy.png", 250);
 
 	std::vector<GameObject*> game_objects;
+
 	game_objects.push_back(player);
 	game_objects.push_back(ghost);
 	game_objects.push_back(candy);
+
+	std::vector<Entity*> entities;
+	entities.push_back(ghost);
+	entities.push_back(candy);
 
 	bool quit = false;
 	SDL_Event event;
@@ -49,13 +56,11 @@ int main(int argc, char* args[])
 				object->Move(dt);
 			}
 
-			for (GameObject* object : game_objects)
+			for (Entity* entity : entities)
 			{
-				if (object != player)
-				{
-					bool a = player->collider->CheckCollision(object->collider);
-					printf("%u", a);
-				}
+				bool is_colliding = player->collider->CheckCollision(entity->collider);
+				if (is_colliding)
+					entity->OnCollision();
 			}
 
 			DrawFrog();

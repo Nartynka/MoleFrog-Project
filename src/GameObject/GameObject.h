@@ -10,6 +10,7 @@ public:
 	void Draw();
 	virtual void Move(float dt);
 	virtual bool CheckScreenBounds();
+	virtual void OnCollision();
 	Collider* collider;
 protected:
 	struct SDL_Texture* texture;

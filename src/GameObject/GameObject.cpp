@@ -34,9 +34,12 @@ bool GameObject::CheckScreenBounds()
 {
 	if (position.x + size.x < 0 || position.x > SCREEN_WIDTH || position.y < 0 || position.y > SCREEN_HEIGHT)
 	{
-		printf("OUTSIDE");
 		return true;
 	}
 
 	return false;
+}
+
+void GameObject::OnCollision()
+{
 }

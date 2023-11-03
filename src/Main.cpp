@@ -27,8 +27,6 @@ int main(int argc, char* args[])
 	Player* player = new Player();
 
 	std::vector<GameObject*> game_objects;
-	std::vector<Entity*> entities;
-
 	game_objects.push_back(player);
 
 	EntitySpawner* spawner = new EntitySpawner();
@@ -48,43 +46,43 @@ int main(int argc, char* args[])
 				if (event.type == SDL_QUIT)
 					quit = true;
 			}
-
 		
 			player->HandleInput();
 
 			for (GameObject* object : game_objects)
 			{
-				if(object)
-					object->Move(dt);
-			}
-
-			for (Entity* entity : entities)
-			{
-				if (entity == nullptr)
+				if(!object)
 					continue;
 
-				bool is_colliding = player->collider->CheckCollision(entity->collider);
-				bool is_outside_window = entity->CheckScreenBounds();
-				if (is_colliding)
-					entity->OnCollision();
+				object->Move(dt);
 
-				if (is_colliding || is_outside_window)
+				bool is_outside_window = object->CheckScreenBounds();
+
+				if (object != player)
 				{
-					// @TODO destroy when entities go outside the screen
-					// @TODO block player from going outside the screen
-					printf("Destroying\n");
-					entities.erase(std::find(entities.begin(), entities.end(), entity));
-					game_objects.erase(std::find(game_objects.begin(), game_objects.end(), entity));
-					delete entity;
-				}
+					bool is_colliding = player->collider->CheckCollision(object->collider);
+					
+					if (is_colliding)
+						object->OnCollision();
 
+					if (is_outside_window || is_colliding)
+					{
+						printf("Destroying\n");
+						game_objects.erase(std::find(game_objects.begin(), game_objects.end(), object));
+						delete object;
+					}
+				}
+				else if(is_outside_window)
+				{
+					// @TODO block player from going outside the screen
+				}
 			}
 
 			if (spawn_timeout <= 0.f)
 			{
 				Entity* spawned_entity = spawner->Spawn();
 				game_objects.push_back(spawned_entity);
-				entities.push_back(spawned_entity);
+				//entities.push_back(spawned_entity);
 				spawn_timeout = SPAWN_RATE;
 			}
 			else

@@ -9,7 +9,6 @@ public:
 	~Player();
 	
 	void HandleInput();
-
 private:
 	void Move(float dt) override;
 	int player_ground_level;

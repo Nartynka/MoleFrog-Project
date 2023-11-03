@@ -9,6 +9,7 @@ public:
 	~GameObject();
 	void Draw();
 	virtual void Move(float dt);
+	virtual bool CheckScreenBounds();
 	Collider* collider;
 protected:
 	struct SDL_Texture* texture;

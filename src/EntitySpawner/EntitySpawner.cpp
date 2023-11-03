@@ -16,7 +16,6 @@ EntitySpawner::~EntitySpawner()
 
 Entity* EntitySpawner::Spawn()
 {
-	printf("spawn\n");
 	float random_side = rand() % 2;
 	float random_height = rand() % (SCREEN_HEIGHT - GROUND_LEVEL) + 1;
 	int random_entity = rand() % 2;

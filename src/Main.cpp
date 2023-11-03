@@ -64,15 +64,20 @@ int main(int argc, char* args[])
 					continue;
 
 				bool is_colliding = player->collider->CheckCollision(entity->collider);
+				bool is_outside_window = entity->CheckScreenBounds();
 				if (is_colliding)
+					entity->OnCollision();
+
+				if (is_colliding || is_outside_window)
 				{
 					// @TODO destroy when entities go outside the screen
 					// @TODO block player from going outside the screen
-					entity->OnCollision();
+					printf("Destroying\n");
 					entities.erase(std::find(entities.begin(), entities.end(), entity));
 					game_objects.erase(std::find(game_objects.begin(), game_objects.end(), entity));
 					delete entity;
 				}
+
 			}
 
 			if (spawn_timeout <= 0.f)

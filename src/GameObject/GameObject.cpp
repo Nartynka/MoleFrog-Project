@@ -1,6 +1,8 @@
 #include "GameObject.h"
 
 #include "../Render/Render.h"
+#include "../Globals.h"
+#include <cstdio>
 
 GameObject::GameObject(const char* texture_path)
 {
@@ -26,4 +28,15 @@ void GameObject::Move(float dt)
 		position.x += velocity.x * speed * dt;
 	}
 	collider->UpdatePosition(position);
+}
+
+bool GameObject::CheckScreenBounds()
+{
+	if (position.x + size.x < 0 || position.x > SCREEN_WIDTH || position.y < 0 || position.y > SCREEN_HEIGHT)
+	{
+		printf("OUTSIDE");
+		return true;
+	}
+
+	return false;
 }

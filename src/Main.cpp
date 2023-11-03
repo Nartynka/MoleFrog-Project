@@ -51,7 +51,7 @@ int main(int argc, char* args[])
 
 			for (GameObject* object : game_objects)
 			{
-				if(!object)
+				if (object == nullptr)
 					continue;
 
 				object->Move(dt);
@@ -74,15 +74,15 @@ int main(int argc, char* args[])
 				}
 				else if(is_outside_window)
 				{
-					// @TODO block player from going outside the screen
+					player->OnOutsideScreen(dt);
 				}
+				
 			}
 
 			if (spawn_timeout <= 0.f)
 			{
 				Entity* spawned_entity = spawner->Spawn();
 				game_objects.push_back(spawned_entity);
-				//entities.push_back(spawned_entity);
 				spawn_timeout = SPAWN_RATE;
 			}
 			else

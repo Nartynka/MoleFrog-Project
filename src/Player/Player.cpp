@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "../Globals.h"
 #include <SDL.h>
+#include <stdio.h>
 
 Player::Player() : GameObject("res/Player.jpg")
 {
@@ -34,7 +35,7 @@ void Player::HandleInput()
 	{
 		velocity.y = -1;
 	}
-	else if(position.y != player_ground_level)
+	else if(position.y < player_ground_level)
 	{
 		velocity.y = 1;
 	}
@@ -44,6 +45,23 @@ void Player::HandleInput()
 	}
 }
 
+void Player::OnOutsideScreen(float dt)
+{
+	position.x -= velocity.x * speed * dt;
+	position.y -= velocity.y * speed * dt;
+	//velocity = {0,0};
+}
+
+bool Player::CheckScreenBounds()
+{
+	if (position.x < 0 || position.x + size.x > SCREEN_WIDTH || position.y < 0 || position.y + size.y > SCREEN_HEIGHT)
+	{
+		return true;
+	}
+
+	return false;
+}
+
 void Player::Move(float dt)
 {
 	if (velocity.x != 0)
@@ -51,9 +69,13 @@ void Player::Move(float dt)
 		position.x += velocity.x * speed * dt;
 	}
 
+	
 	if (velocity.y != 0)
 	{
-		position.y += velocity.y * jump_speed * dt;
+	//    player is jumping          player is falling
+		if(velocity.y < 0 || position.y <= player_ground_level)
+			position.y += velocity.y * jump_speed * dt;
 	}
+
 	collider->UpdatePosition(position);
 }

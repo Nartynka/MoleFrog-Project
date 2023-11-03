@@ -2,7 +2,6 @@
 
 #include "../Render/Render.h"
 #include "../Globals.h"
-#include <cstdio>
 
 GameObject::GameObject(const char* texture_path)
 {

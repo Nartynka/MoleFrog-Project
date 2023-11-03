@@ -5,7 +5,7 @@ Entity::Entity(const char* texture_path, float pos_x, float pos_y, float vel_x) 
 {
 	velocity = { vel_x, 0 };
 	if(pos_x == 0)
-		position = { 0.f, pos_y };
+		position = { 0.f-size.x, pos_y };
 	else
 		position = { SCREEN_WIDTH, pos_y };
 

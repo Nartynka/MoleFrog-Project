@@ -6,3 +6,6 @@ const int GROUND_LEVEL = 500;
 
 // @TODO create ui for displaying points
 static int points = 0;
+
+extern bool game_over;
+extern float dt;

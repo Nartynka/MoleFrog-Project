@@ -62,7 +62,7 @@ bool Player::CheckScreenBounds()
 	return false;
 }
 
-void Player::Move(float dt)
+void Player::Move()
 {
 	if (velocity.x != 0)
 	{

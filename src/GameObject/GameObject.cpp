@@ -20,7 +20,7 @@ void GameObject::Draw()
 	DrawObject(texture, size, position);
 }
 
-void GameObject::Move(float dt)
+void GameObject::Move()
 {
 	if (velocity.x != 0)
 	{

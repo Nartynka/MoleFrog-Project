@@ -3,6 +3,7 @@
 #include <vector>
 #include <ctime>
 
+#include "Globals.h"
 #include "Render/Render.h"
 #include "Player/Player.h"
 #include "Entity/Entity.h"
@@ -10,10 +11,12 @@
 #include "Entity/Ghost/Ghost.h"
 #include "EntitySpawner/EntitySpawner.h"
 
+// @TODO Create Game class that will take care of points, game over, dt etc.
+float dt = (float)(SDL_GetTicks() / 1000.f);
+bool game_over = false;
 
 int main(int argc, char* args[])
 {
-	float dt = (float)(SDL_GetTicks() / 1000.f);
 	float lastTime = 0.f;
 	const float DESIRED_DT = 1 / 60.f; // 60 FPS
 
@@ -34,6 +37,7 @@ int main(int argc, char* args[])
 	float spawn_timeout = SPAWN_RATE;
 
 	bool quit = false;
+	
 	SDL_Event event;
 	
 	while (!quit)
@@ -47,60 +51,67 @@ int main(int argc, char* args[])
 					quit = true;
 			}
 		
-			player->HandleInput();
-
-			for (GameObject* object : game_objects)
+			if (!game_over)
 			{
-				if (object == nullptr)
-					continue;
+				player->HandleInput();
 
-				object->Move(dt);
-
-				bool is_outside_window = object->CheckScreenBounds();
-
-				if (object != player)
+				for (GameObject* object : game_objects)
 				{
-					bool is_colliding = player->collider->CheckCollision(object->collider);
-					
-					if (is_colliding)
-						object->OnCollision();
+					if (object == nullptr)
+						continue;
 
-					if (is_outside_window || is_colliding)
+					object->Move();
+
+					bool is_outside_window = object->CheckScreenBounds();
+
+					if (object != player)
 					{
-						printf("Destroying\n");
-						game_objects.erase(std::find(game_objects.begin(), game_objects.end(), object));
-						delete object;
+						bool is_colliding = player->collider->CheckCollision(object->collider);
+					
+						if (is_colliding)
+							object->OnCollision();
+
+						if (is_outside_window || is_colliding)
+						{
+							printf("Destroying\n");
+							game_objects.erase(std::find(game_objects.begin(), game_objects.end(), object));
+							delete object;
+						}
 					}
-				}
-				else if(is_outside_window)
-				{
-					player->OnOutsideScreen(dt);
-				}
+					else if(is_outside_window)
+					{
+						player->OnOutsideScreen(dt);
+					}
 				
-			}
+				}
 
-			if (spawn_timeout <= 0.f)
-			{
-				Entity* spawned_entity = spawner->Spawn();
-				game_objects.push_back(spawned_entity);
-				spawn_timeout = SPAWN_RATE;
-			}
-			else
-			{
-				spawn_timeout -= dt;
-			}
+				if (spawn_timeout <= 0.f)
+				{
+					Entity* spawned_entity = spawner->Spawn();
+					game_objects.push_back(spawned_entity);
+					spawn_timeout = SPAWN_RATE;
+				}
+				else
+				{
+					spawn_timeout -= dt;
+				}
 
-			DrawFrog();
-			DrawMole();
-			DrawGround();
+				DrawFrog();
+				DrawMole();
+				DrawGround();
 
-			for (GameObject* object : game_objects)
-			{
-				if(object)
-					object->Draw();
+				for (GameObject* object : game_objects)
+				{
+					if (object)
+						object->Draw();
+				}
+
+				Render();
 			}
-			
-			Render();
+			else if (game_over)
+			{
+				printf("GAME OVEEEEEERRR! Points: %u\n", points);
+			}
 
 			lastTime = (float)SDL_GetTicks();
 

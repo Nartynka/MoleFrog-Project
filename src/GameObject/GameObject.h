@@ -8,7 +8,7 @@ public:
 	GameObject(const char* texture_path);
 	~GameObject();
 	void Draw();
-	virtual void Move(float dt);
+	virtual void Move();
 	virtual bool CheckScreenBounds();
 	virtual void OnCollision();
 	Collider* collider;

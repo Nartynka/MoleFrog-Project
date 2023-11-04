@@ -12,6 +12,6 @@ public:
 	void OnOutsideScreen(float dt);
 	bool CheckScreenBounds() override;
 private:
-	void Move(float dt) override;
+	void Move() override;
 	int player_ground_level;
 };
